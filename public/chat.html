@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Socket.IO chat APP</title>
+    <!--
+        <script src="client.js"></script>-->
+        
+        <!-- <script defer src="/socket.io/socket.io.js"></script> -->
+        <!-- <script src="https://cdn.socket.io/4.5.4/socket.io.min.js" integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI" crossorigin="anonymous"></script>
+        -->
+        <script src="/socket.io/socket.io.js"></script>
+        
+        
+        <h1></h1>
+        <script>
+
+        const socket = io();
+
+        socket.on('connect');
+
+
+        
+        socket.on('nuevo-msj', (data) => {
+            document.querySelector('h1').innerHTML = data;
+            debugger
+            console.log(data)
+        })
+      
+        
+        const sendMessage = () => {
+            debugger
+            const messageInput = document.querySelector('.message');
+            const message = messageInput.value;
+            socket.emit('message-chat', message)
+        }
+
+
+        //obtenemos respuesta del servidor
+        socket.on('nuevo-msj', (datos) => {
+        console.log(datos)
+        chat.append
+        })
+
+    </script>
+
+
+
+    <!-- <script defer src="../client.js"> </script> -->
+     <style>
+        body {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        #message-container {
+            width: 80%;
+            max-width: 1200px;
+        }
+
+        #message-container div {
+            background-color: #CCC;
+            padding: 5px;
+        }
+
+        #message-container div:nth-child(2n) {
+            background-color: #FFF;
+        }
+
+        #send-container {
+            position: fixed;
+            padding-bottom: 30px;
+            bottom: 0;
+            background-color: white;
+            max-width: 1200px;
+            width: 80%;
+            display: flex;
+        }
+
+        #message-input {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Desde el div Card => para probar el append -->
+    <!--
+    <nav class="nav navbar-dark bg-dark">
+        <a href="/" class="nav navbar-brand mx-auto">Chat RRR</a>
+    </nav>
+
+    <div class="card col-md-4 mx-auto mt-5" id="nick-wrap">
+        <div class="card-header">
+            <h4>Introduce tu nombre</h4>
+        </div>
+        <p id="nick-error"></p>
+        <div class="card-body">
+            <form id="nick-form">
+                <input type="text" , id="nick-name" class="form-control">
+                <button type="submit" class="btn btn-succes mt-3" id="nick-btn">Acceder</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container" id="content-wrap">
+        <div class="row">
+            <div class="col-md-7 mt-5">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h4> Chat: </h4>
+                    </div>
+                    <div class="card-body" id="chat">
+
+                    </div>
+
+                    <form id="messages-form" class="card-footer">
+                        <div class="input-gorup">
+                            <input class="form-control" type="text" id="mmessage">
+                            <div class="input-group-append">
+                                <button class="btn btn-succes" type="submit">Enviar</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-3 mt-5">
+                <div class="card">
+
+                    <div class="card-header">
+                        <h4> Usuarios: </h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="usernames">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+-->
+    <!-- Hasta aca es prueba,  -->
+
+    
+
+    <div id="message-container"></div>
+    <form id="send-container">
+        <input class="message" type="text" id="message-input" placeholder="escribe texto">
+        <button onclick="sendMessage()">Send</button>
+    </form>
+ 
+   <!-- <script src="/socket.io/socket.io.js"></script>-->
+   <!-- <script src="client.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <!-- El script de arriba es para Jquery -->
+
+</body>
+
+</html>

@@ -3,11 +3,15 @@ const jwt = require('jsonwebtoken');
 
 function auth(req, res, next){
     try {
-        const token = req.header('Token');
+        //sacamos el Bearer de la request.
+        if (!req.header('Authorization')) {
+            throw new Error('Token invalido');
+        }
+        const token = req.header('Authorization').split(' ')[1];
         jwt.verify(token, process.env.SECRET);
         next();
     } catch (error) {
-        res.status(401).send({error: error.message});
+        res.status(401).send(error.message);
         //401 = Desautorizado
     }
 }
