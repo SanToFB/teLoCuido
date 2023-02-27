@@ -5,15 +5,13 @@ const RapidApi_Host = process.env.RapidApi_Host;
 
 async function getClima(lat, lon) {
     //si latitud y longitud vienen vacios se pone por default lat y lon de buenos aires.
-    if (lat == undefined || lat == " ") {
+    console.log(lat, "lon " , lon)
+    if (lat === undefined || lat === " ") {
         lat = '-34.61315';
     }
     if (lon == undefined || lon == " ") {
         lon = '-58.37723';
     }
-    console.log("lat " + lat);
-    console.log("lon " + lon);
-
     let result = null;
     const options = {
         method: 'GET',

@@ -29,7 +29,6 @@ router.get('/api/nanniesByTurno/:turno', async (req, res) => {
 
 router.get('/api/nanniesByMascota/:mascota', async (req, res) => {
     let esMascota = req.params.mascota.toLowerCase();
-    console.log(esMascota)
     let nannies = null;
     try{
         nannies = await user.getNanniesByMascota(esMascota);

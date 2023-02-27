@@ -10,10 +10,8 @@ const dbName = process.env.DB_name; //teLoCuido
 async function getUsuarios(esNanny) {
     const clienteMongo = await connection.getConnection();
     let usuarios = null;
-    console.log("es nanny controller: " + esNanny)
     try {
         if (esNanny) {
-            //console.log("entra en el true")
             usuarios = await clienteMongo.db(dbName).collection('nannys').find()
                 .toArray();
         } else {
@@ -46,7 +44,6 @@ async function getUsuario(id, esNanny) {
 async function getNanniesByTurno(turno) {
     const clienteMongo = await connection.getConnection();
     let nannies = null;
-    console.log(turno)
     try {
         validator.checkTurno2(turno);
         nannies = await clienteMongo.db(dbName).collection('nannys')
@@ -66,7 +63,6 @@ async function getNanniesByMascota(mascota) {
     }
     let nannies = null;
     validator.checkBool(boolMascota);
-    console.log(boolMascota)
     nannies = await clienteMongo.db(dbName).collection('nannys')
         .find({ cuidaMascotas: boolMascota }).toArray()
         console.log(nannies)
@@ -78,8 +74,7 @@ async function addUsuario(usuario, esNanny) {
     let agregar = null;
     if (esNanny) {
         validator.validarNanny(usuario.isNanny, usuario.nombre, usuario.apellido, usuario.fecha_nacimiento,
-            usuario.mail, usuario.ciudad, usuario.dni, usuario.turno, usuario.dias, usuario.cuidaMascotas,
-            usuario.disponibilidad)
+            usuario.mail, usuario.ciudad, usuario.dni, usuario.turno, usuario.dias, usuario.cuidaMascotas)
         usuario.password = bcrypt.hashSync(usuario.password, 8);
         agregar = await clienteMongo.db(dbName).collection('nannys').insertOne(usuario);
     } else {
@@ -135,14 +130,13 @@ async function updateUsuario(usuario, id, esNanny) {
             }
         };
     } else {
-        validator.validarUpdateNanny(usuario.mail, usuario.ciudad, usuario.turno, usuario.dias, usuario.disponibilidad, usuario.cuidaMascotas);
+        validator.validarUpdateNanny(usuario.mail, usuario.ciudad, usuario.turno, usuario.dias, usuario.cuidaMascotas);
         newvalues = {
             $set: {
                 mail: usuario.mail,
                 ciudad: usuario.ciudad,
                 turno: usuario.turno,
                 dias: usuario.dias,
-                disponibilidad: usuario.disponibilidad,
                 cuidaMascotas: usuario.cuidaMascotas
             }
         };

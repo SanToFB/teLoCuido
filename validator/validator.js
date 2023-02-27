@@ -9,13 +9,12 @@ function validarUpdateUsuario(mail, ciudad, turno, dias) {
 }
 
 //validar al hacer update de Usuario Nanny
-function validarUpdateNanny(mail, ciudad, turno, dias, bool1, bool2) {
+function validarUpdateNanny(mail, ciudad, turno, dias, bool1) {
     checkEmail(mail)
     checkAlpha(ciudad)
     checkTurno(turno)
     checkDias(dias)
     checkBool(bool1)
-    checkBool(bool2)
 }
 
 //validar al hacer add de Usuario
@@ -32,7 +31,7 @@ function validarUsuario(bool0, nombre, apellido, fecha, mail, ciudad, dni, turno
 }
 
 //validar al hacer add de Usuario Nanny
-function validarNanny(bool0, nombre, apellido, fecha, mail, ciudad, dni, turno, dias, bool1, bool2) {
+function validarNanny(bool0, nombre, apellido, fecha, mail, ciudad, dni, turno, dias, bool1) {
     checkBool(bool0)
     checkAlpha(nombre)
     checkAlpha(apellido)
@@ -43,7 +42,6 @@ function validarNanny(bool0, nombre, apellido, fecha, mail, ciudad, dni, turno, 
     checkTurno(turno)
     checkDias(dias)
     checkBool(bool1)
-    checkBool(bool2)
 }
 
 function checkEmail(mail) {

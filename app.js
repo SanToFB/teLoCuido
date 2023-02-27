@@ -8,10 +8,6 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 
-//const { body, validationResult } = require('express-validator');
-
-const users = require ('./controllers/users');
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var nanniesRouter = require('./routes/nannies');
@@ -52,17 +48,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-//Pendientes:
-//6- Actualizar loadNannys y usuarios (collections). Nuevo load de archivos script, se cambio DNI por dni
-
-
-/* revisar:
-2-hacer un laod nuevo para cambiar los DNI por dni. Users y nannys
-3- Es nannies no nannys.
-4- BIN => chat.ejs
-5- app.
-6-socket
-*/
 
 module.exports = {app: app, server: server};

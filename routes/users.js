@@ -44,7 +44,7 @@ router.post('/api/login', async (req, res) => {
 });
 
 
-router.put('/api/user/:id', async (req, res) => {
+router.put('/api/user/:id', /*auth,*/ async (req, res) => {
     let id = req.params.id;
     let usuario = req.body.user;
     try{
@@ -55,7 +55,7 @@ router.put('/api/user/:id', async (req, res) => {
     }
 });
 
-router.delete('/api/user/:id', /*auth,*/ async (req, res) => {
+router.delete('/api/user/:id', auth, async (req, res) => {
     let id = req.params.id;
     try{
         let usuarioAEliminar = await user.getUsuario(id, false);
@@ -66,7 +66,7 @@ router.delete('/api/user/:id', /*auth,*/ async (req, res) => {
     }
 });
 
-router.post('/api/agregarFavoritos', async (req, res) => {
+router.post('/api/agregarFavoritos', /*auth,*/ async (req, res) => {
     let userId = req.body.userId;
     let userFavoritosId = req.body.userFavoritosId;
     try{
@@ -78,7 +78,7 @@ router.post('/api/agregarFavoritos', async (req, res) => {
 });
 
 
-router.put('/api/borrarFavoritos', async (req, res) => {
+router.put('/api/borrarFavoritos', /*auth,*/ async (req, res) => {
     let userFavoritosId = req.body.userFavoritosId;
     let result = null;
     try {

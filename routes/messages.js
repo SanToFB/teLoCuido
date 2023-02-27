@@ -25,8 +25,8 @@ router.get('/api/mensajes', async (req, res) => {
     res.send(mensajes);
 });
 
-router.get('/api/mensaje', async (req, res) => {
-    let id = req.body.id;
+router.get('/api/mensaje/:id', async (req, res) => {
+    let id = req.params.id;
     let mensaje = null;
     mensaje = await msg.getMessage(id);
     console.log("mensaje por id: " + mensaje.mensaje)
@@ -37,8 +37,8 @@ router.get('/api/mensaje', async (req, res) => {
     }
 });
 
-router.delete('/api/mensaje',/* auth,*/ async (req, res) => {
-    let id = req.body.id;
+router.delete('/api/mensaje/:id',/* auth,*/ async (req, res) => {
+    let id = req.params.id;
     let result = await msg.deleteMessage(id);
     res.json(result);
 });
