@@ -61,17 +61,17 @@ messages/api/mensaje                    => trae un mensaje por id.
 
 POST:
 users/api/user                          => agrega usuario.
-nannies/api/user                        => agrega nanny.
 users/api/login                         => login de usuario.
-nannies/api/login                       => login de nanny.
 users/api/agregarFavoritos              => agrega usuario a lista de favoritos.
+nannies/api/user                        => agrega nanny.
+nannies/api/login                       => login de nanny.
 nannies/api/agregarFavoritos            => agrega nanny a lista de favoritos.
 messages/api/enviarMensaje              => agrega mensaje a la colleccion.
 
 PUT:
 users/api/user/:id                      => actualiza datos de usuario.
-nannies/api/user/:id                    => actualiza datos de nanny.
 users/api/borrarFavoritos               => borra de favoritos un usuario o nanny.
+nannies/api/user/:id                    => actualiza datos de nanny.
 nannies/api/borrarFavoritos             => borra de favoritos un nanny.
 
 DELETE:
